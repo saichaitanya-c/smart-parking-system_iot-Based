@@ -43,14 +43,25 @@ Online Monitoring: Users can check parking availability through an online platfo
 - **Web Interface**: Displays the available parking slots online, with updates every few seconds.
 - **Circuit Diagrams**: Guides for wiring the IR sensors and ESP32 module.
   
-### **Usage**
-1. **Hardware Setup**: Connect IR sensors to the appropriate GPIO pins of the ESP32 and set up the entrance gate mechanism.
-2. **Upload Code**: Use Arduino IDE to upload the `main.ino` code to the ESP32.
-3. **Monitor Slots**: Once set up, the system automatically updates the entrance display and online interface with the available parking slots.
-4. **Control Gate**: The entrance gate opens or closes automatically depending on the number of available parking slots.
+##How to Use:
+Connect the ESP32 to Your WiFi:
 
-### **System Diagrams**
-- **System Architecture**: Shows the overall layout of the components.
-- **Circuit Diagram**: Depicts the wiring between the IR sensors, ESP32, and gate mechanism.
-- **Flowchart**: Describes the logical flow of the system, including gate control and slot detection.
+Replace your-ssid and your-password in the code with your actual WiFi credentials.
+IR Sensors Setup:
+
+Connect your IR sensors to the defined GPIO pins (e.g., GPIO 2, 3, 4, 5, and 6 in this example).
+Modify the irSensors array to match the actual pin connections for your IR sensors.
+Gate Control:
+
+The GATE_PIN (GPIO 12 in this case) controls the gate. You can connect a servo, motor, or any mechanism to this pin.
+When the parking lot is full (i.e., no slots available), the gate will remain closed (LOW).
+When there are available slots, the gate will open (HIGH).
+Web Interface:
+
+The ESP32 runs a simple web server that shows the number of available parking slots.
+To access the webpage:
+Once the ESP32 is connected to WiFi, check the Serial Monitor for the IP address of the ESP32 (it will be displayed as IP Address: xxx.xxx.xxx.xxx).
+Enter this IP address in the browser of any device connected to the same network (e.g., http://192.168.x.x).
+You’ll see a simple web page showing the number of available slots.
+
 
